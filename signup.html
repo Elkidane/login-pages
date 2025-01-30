@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: white;
+        }
+        .container {
+            background: white;
+            padding: 50px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(2, 2, 2, 2.1);
+            width: 300px;
+        }
+        input {
+            width: 100%;
+            padding: 12px;
+            margin: 5px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-shadow:0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        button {
+            width: 100%;
+            margin-top: 50px;
+            padding: 12px;
+            background: #879244;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background:#4cae4c;
+        }
+        h2{
+            text-align: center;
+            font-size: 30px;
+        }
+        .error {
+            color: red;
+            font-size: 14px;
+        }
+        .social-login {
+            margin-top: 20px;
+        }
+        .social-btn {
+            width: 100%;
+            padding: 10px;
+            margin-top: 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+        .google-btn {
+            background: #ad2b17;
+            color: white;
+        }
+        .facebook-btn {
+            background: #073087;
+            color: white;
+        }
+        
+        .divider {
+            margin-top: 20px;
+            font-weight: bold;
+            text-align: center;
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h2>Sign Up</h2>
+        <form id="signupForm">
+            <input type="text" id="name" placeholder="Full Name" required>
+            <input type="email" id="email" placeholder="Email" required>
+            <input type="password" id="password" placeholder="Password" required>
+            <input type="password" id="password2" placeholder="Confirm Password" required>
+
+            <button type="submit">Sign Up</button>
+            <p class="error" id="errorMessage"></p>
+        </form>
+
+        <p class="divider">Or sign in with</p>
+
+        <div class="social-login">
+            <button class="social-btn google-btn">
+                Sign in with Google
+            </button>
+            <button class="social-btn facebook-btn">
+               Sign in with Facebook
+            </button>
+        </div>
+    </div>
+    <script>
+        
+        document.getElementById("signupForm").addEventListener("submit", function(event) {
+            event.preventDefault();
+            
+            const name = document.getElementById("name").value.trim();
+            const email = document.getElementById("email").value.trim();
+            const password = document.getElementById("password").value.trim();
+            const password2 = document.getElementById("password2").value.trim();
+            const errorMessage = document.getElementById("errorMessage");
+
+            if (!name || !email || !password || !password2) {
+            errorMessage.textContent = "All fields are required!";
+            return;
+               }
+            if (password.length < 8) {
+                errorMessage.textContent = "Password must be at least 8 characters!";
+                return;
+            }
+            if (password !== password2) {
+            errorMessage.textContent = "Passwords do not match!";
+            return;
+            }
+            alert("Sign-up successful!");
+            errorMessage.textContent = "";
+            this.reset(); 
+        });
+    </script>
+
+</body>
+</html>
